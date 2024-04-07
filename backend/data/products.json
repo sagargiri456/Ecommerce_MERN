@@ -1,0 +1,48 @@
+[{
+    "name": "Sanddisk cruzer Blade",
+      "price": 400,
+      "description":"this is a class a card which will has a very fast transfer rate either read or write",
+      "rating": 4,
+      "images": [{
+        "public_id": "products/",
+        "url":"this is the url"
+      }],
+      "cateogory":"Electronics",
+      "seller": "Flipkart",
+      "stock": 50,
+      "numofReview": 32,
+      "review": []
+      
+},
+{
+    "name": "Sanddisk cruzer Blade",
+      "price": 400,
+      "description":"this is a class a card which will has a very fast transfer rate either read or write",
+      "rating": 4,
+      "images": [{
+        "public_id": "products/",
+        "url":"this is the url"
+      }],
+      "cateogory":"Electronics",
+      "seller": "Flipkart",
+      "stock": 50,
+      "numofReview": 32,
+      "review": []
+      
+},{
+    "name": "Sanddisk cruzer Blade",
+      "price": 400,
+      "description":"this is a class a card which will has a very fast transfer rate either read or write",
+      "rating": 4,
+      "images": [{
+        "public_id": "products/",
+        "url":"this is the url"
+      }],
+      "cateogory":"Electronics",
+      "seller": "Flipkart",
+      "stock": 50,
+      "numofReview": 32,
+      "review": []
+      
+}
+]
