@@ -151,19 +151,13 @@ const Home = ({ match }) => {
 
                   <div className="col-6 col-md-9">
                     <div className="row">
-                      {products &&
-                        products.map((product) => (
-                          <Product
-                            key={product._id}
-                            product={product}
-                            col={4}
-                          />
-                        ))}
+                      {products.map((product) => (
+                        <Product key={product._id} product={product} col={4} />
+                      ))}
                     </div>
                   </div>
                 </Fragment>
               ) : (
-                products &&
                 products.map((product) => (
                   <Product key={product._id} product={product} col={3} />
                 ))

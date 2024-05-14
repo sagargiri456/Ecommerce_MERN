@@ -14,19 +14,20 @@ exports.newProduct = catchAsyncerror(async (req, res, next) => {
 });
 
 exports.getProducts = catchAsyncerror(async (req, res, next) => {
-  // const resPerPage = 4;
-  // const productsCount = await product.countDocument();
+  const resPerPage = 4;
+  const productsCount = await Product.countDocuments();
   const apifeatures = new APIFeatures(Product.find(), req.query)
     .search()
-    .filter();
+    .filter()
+    .pagination(resPerPage);
 
   const products = await apifeatures.query;
 
   res.status(200).json({
     success: true,
     products,
-    // resPerPage,
-    // productsCount,
+    resPerPage,
+    productsCount,
   });
 });
 //get single product details => /api/v1/product/:id
