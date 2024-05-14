@@ -31,7 +31,7 @@ router
   .get(allUsers, authorizeRoles("admin"), isAuthenticatedUser);
 router
   .route("/admin/users/:id")
-  .get(getUserDetail, authorizeRoles("admin"), isAuthenticatedUser)
+  .get(getUserDetails, authorizeRoles("admin"), isAuthenticatedUser)
   .put(updateUser, authorizeRoles("admin"), isAuthenticatedUser)
   .delete(deleteUser, authorizeRoles("admin"), isAuthenticatedUser);
 

@@ -11,7 +11,6 @@ const {
   createProductReview,
   getProductReviews,
 } = require("../Controller/ProductController");
-const { isAuthenticatedUser } = require("../middlewares/auth");
 
 router.route("/products").get(getProducts);
 router.route("/product/:id").get(getSingleProduct);

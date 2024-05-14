@@ -7,12 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
     "dev": "SET NODE_ENV=DEVELOPMENT & nodemon backend/server",
-    "pro": "SET NODE_ENV=PRODUCTION & nodemon backend/server",
+    "prod": "SET NODE_ENV=PRODUCTION & nodemon backend/server",
     "seeder": "node backend/utils/seeder.js"
   },
   "author": "sagar giri",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cloudinary": "^2.0.1",
@@ -23,9 +24,18 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.1",
     "nodemailer": "^6.9.11",
+    "react-bootstrap": "^2.10.2",
+    "react-helmet": "^6.1.0",
+    "react-paginate": "^8.2.0",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "^5.0.1",
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
     "validator": "^13.11.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.19"
   }
+  
 }

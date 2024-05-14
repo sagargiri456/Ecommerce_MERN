@@ -1,5 +1,5 @@
 const Order = require("../models/order");
-const Product = require("../models/product");
+const Product = require("../models/products");
 
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middlewares/catchAsynceroors");
@@ -53,18 +53,16 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
 
 async function updateStock(id, quantity) {
   const product = await Product.findById(id);
+  Product.stock = product.stock - quantity;
+  await product.save({ validatebeforesave: false });
 }
-Product.stock = product.stock - quantity;
-await product.save({ validatebeforesave: false });
 
-exports.myOrder = catchAsyncErrors(async (req, res, next) => {
+exports.myOrders = catchAsyncErrors(async (req, res, next) => {
   const orders = await Order.find({ user: req.user.id });
-  if (!order) {
-    return next(new ErrorHandler("No Order Found with this ID", 404));
-  }
+
   res.status(200).json({
     success: true,
-    order,
+    orders,
   });
 });
 
@@ -117,5 +115,19 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     order,
+  });
+});
+
+exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return next(new ErrorHandler("No Order found with this ID", 404));
+  }
+
+  await order.remove();
+
+  res.status(200).json({
+    success: true,
   });
 });

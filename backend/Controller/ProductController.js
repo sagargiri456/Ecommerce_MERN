@@ -2,7 +2,6 @@ const Product = require("../models/products");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncerror = require("../middlewares/catchAsynceroors");
 const APIFeatures = require("../utils/apifeatures");
-const catchAsynceroors = require("../middlewares/catchAsynceroors");
 //create new products => /api/v1/product/new
 exports.newProduct = catchAsyncerror(async (req, res, next) => {
   req.body.user = req.user.id;
@@ -15,14 +14,19 @@ exports.newProduct = catchAsyncerror(async (req, res, next) => {
 });
 
 exports.getProducts = catchAsyncerror(async (req, res, next) => {
-  const apifeatures = new APIFeatures(Product.find(), req.query).search();
+  // const resPerPage = 4;
+  // const productsCount = await product.countDocument();
+  const apifeatures = new APIFeatures(Product.find(), req.query)
+    .search()
+    .filter();
 
   const products = await apifeatures.query;
 
   res.status(200).json({
     success: true,
-    count: Product.length,
     products,
+    // resPerPage,
+    // productsCount,
   });
 });
 //get single product details => /api/v1/product/:id
@@ -71,7 +75,7 @@ exports.deleteProduct = async (req, res, next) => {
 };
 
 // Create new review => /api/v1/review
-exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
+exports.createProductReview = catchAsyncerror(async (req, res, next) => {
   const { rating, comment, productId } = req.body;
   const review = {
     user: req.user._id,
@@ -80,8 +84,8 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
     comment,
   };
 
-  const prduct = await Product.findById(productId);
-  const isReviewd = product.reviews.find(
+  const product = await Product.findById(productId);
+  const isReviewed = product.reviews.find(
     (r) => r.user.toString() === req.user._id.toString()
   );
   if (isReviewed) {
@@ -105,7 +109,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
   });
 });
 // Get Product Reviews => /api/v1/reviews
-exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
+exports.getProductReviews = catchAsyncerror(async (req, res, next) => {
   const product = await Product.findById(req.body.id);
   res.status(200).json({
     success: true,
@@ -113,7 +117,7 @@ exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
   });
 });
 //Delete Product Review => /api/v1/review
-exports.deleteReview = catchAsynceroors(async (req, res, next) => {
+exports.deleteReview = catchAsyncerror(async (req, res, next) => {
   const product = await Product.findById(req.query.id);
   const reviews = product.reviews.filter(
     review._id.toString() !== req.user.id.toString()

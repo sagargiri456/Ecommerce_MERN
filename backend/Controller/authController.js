@@ -70,31 +70,30 @@ exports.forgotPassword = catchAsyncerrors(async (req, res, next) => {
   //Get reset token
   const resetToken = User.getResetPasswordToken();
   await user.save({ validatorBeforeSave: false });
+
+  //create user password url
+
+  const resetUrl = `${req.protocol}:${req.get(
+    "host"
+  )}/api/v1/reset/${resetToken}`;
+  const message = `Your Password reset token is as follows : \n\n${resetUrl}\n\n. If you have not requested this email just ignore it.`;
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "ShopIt Password Recovery",
+      message,
+    });
+    res.status(200).json({
+      success: true,
+      message: `Email sent to: ${user.email}`,
+    });
+  } catch (error) {
+    user.getResetPasswordToken = undefined;
+    user.getResetPasswordExpire = undefined;
+    await user.save({ validatorBeforeSave: false });
+    return next(new ErrorHandler(error.message, 500));
+  }
 });
-
-//create user password url
-
-const resetUrl = `${req.protocol}:${req.get(
-  "host"
-)}/api/v1/reset/${resetToken}`;
-const message = `Your Password reset token is as follows : \n\n${resetUrl}\n\n. If you have not requested this email just ignore it.`;
-try {
-  await sendEmail({
-    email: user.email,
-    subject: "ShopIt Password Recovery",
-    message,
-  });
-  res.status(200).json({
-    success: true,
-    message: `Email sent to: ${user.email}`,
-  });
-} catch (error) {
-  user.getResetPasswordToken = undefined;
-  user.getResetPasswordExpire = undefined;
-  await user.save({ validatorBeforeSave: false });
-  return next(new ErrorHandler(error.message, 500));
-}
-
 //Forgot Password => /api/v1/password/reset/:token
 
 exports.resetPassword = catchAsyncerrors(async (req, res, next) => {

@@ -1,11 +1,26 @@
 [{
-    "name": "Sanddisk cruzer Blade",
-      "price": 400,
-      "description":"this is a class a card which will has a very fast transfer rate either read or write",
+  "name" : "SanDisk Ultra 128GB SDXC UHS-I Memory Card up to 80MB/s",
+  "price" : "45.89",
+  "description" : "Ultra-fast cards (2) to take better pictures and Full HD videos (1) with your compact to mid-range point-and-shoot cameras and camcorders. With SanDisk Ultra SDXC UHS-I cards you’ll benefit from faster downloads, high capacity, and better performance to capture and store 128GB (5) of high quality pictures and Full HD video (1). Take advantage of ultra-fast read speeds of up to 80MB/s (3) to save time moving photos and videos from the card to your computer. From a leader in flash memory storage, SanDisk Ultra SDXC UHS-I cards are compatible with SDHC and SDXC digital devices, and come with a 10-year limited warranty (6).",
+  "ratings" : 4.5,
+  "images" : [{
+      "public_id" : "products/dsvbpny402gelwugv2le",
+      "url" : "https://res.cloudinary.com/dz9uv5xjk/image/upload/v1715317812/samples/ecommerce/SanDisk%20Ultra%20128GB%20SDXC%20UHS.webp"
+  }],
+  "category" : "Electronics",
+  "seller" : "Ebay",
+  "stock" : 50,
+  "numOfReviews" : 32,
+  "reviews": []
+},{
+  
+    "name": "analog-classic",
+      "price": 100,
+      "description":"This is an expensive watch which shows you the time.",
       "rating": 4,
       "images": [{
-        "public_id": "products/",
-        "url":"this is the url"
+        "public_id": "products/analog-classic",
+        "url":"https://res.cloudinary.com/bookit/image/upload/v1608062030/products/dsvbpny402gelwugv2le.jpg"
       }],
       "cateogory":"Electronics",
       "seller": "Flipkart",
@@ -15,28 +30,13 @@
       
 },
 {
-    "name": "Sanddisk cruzer Blade",
+    "name": "Shoes",
       "price": 400,
       "description":"this is a class a card which will has a very fast transfer rate either read or write",
       "rating": 4,
       "images": [{
         "public_id": "products/",
-        "url":"this is the url"
-      }],
-      "cateogory":"Electronics",
-      "seller": "Flipkart",
-      "stock": 50,
-      "numofReview": 32,
-      "review": []
-      
-},{
-    "name": "Sanddisk cruzer Blade",
-      "price": 400,
-      "description":"this is a class a card which will has a very fast transfer rate either read or write",
-      "rating": 4,
-      "images": [{
-        "public_id": "products/",
-        "url":"this is the url"
+        "url":"https://res.cloudinary.com/dz9uv5xjk/image/upload/v1708494943/samples/ecommerce/shoes.png"
       }],
       "cateogory":"Electronics",
       "seller": "Flipkart",
